@@ -62,7 +62,6 @@ function verifprenom(prenom) {
 }
 
 
-
 function verifnom(nom) {
 
   let regexnom = /^[A-Z][A-Za-z\é\è\ê\-]+$/;
@@ -139,7 +138,7 @@ function verifcondition() {
 
 function validate() {
 
-  if (verifemail(champemail) && verifnom(champnom) && verifprenom(champprenom) && verifnaissance(champnaissance)  ) {
+  if (verifemail(champemail) && verifnom(champnom) && verifprenom(champprenom) && verifnaissance(champnaissance) && veriftournois(champtournois) && veriflocalisation(champlocalisation) && verifcondition(champcondition)) {
     
     return true;
   } else {
