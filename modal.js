@@ -57,3 +57,18 @@ function verifprenom(prenom) {
   }
   
 }
+
+
+
+function verifnom(nom) {
+
+  let regexnom = /^[A-Z][A-Za-z\é\è\ê\-]+$/;
+  if (nom.match(regexnom)) {
+    return true;
+  } else {
+    document.querySelector(".formData[data-error]")
+    return false;
+    
+  }
+
+}
