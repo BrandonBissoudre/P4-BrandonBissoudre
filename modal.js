@@ -107,3 +107,22 @@ function veriflocalisation() {
 function verifcondition() {
 
 }
+
+
+//*************************************************************************************Bouton validation********************************************************************
+
+
+
+function validate() {
+
+  if (verifemail(champemail)&&){
+  document.
+  return true;
+}
+  else {
+    return false;
+  }
+  
+
+
+}
