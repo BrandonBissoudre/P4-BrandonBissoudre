@@ -50,6 +50,7 @@ const champmodal = document.querySelector(".btn-submit")
 function verifprenom(prenom) {
 
   let regexprenom = /^[A-Z][A-Za-z\é\è\ê\-]+$/;
+
   if (prenom.match(regexprenom)) {
     return true;
   } else {
@@ -65,6 +66,7 @@ function verifprenom(prenom) {
 function verifnom(nom) {
 
   let regexnom = /^[A-Z][A-Za-z\é\è\ê\-]+$/;
+
   if (nom.match(regexnom)) {
     return true;
   } else {
@@ -79,6 +81,7 @@ function verifnom(nom) {
 function verifemail(emailAdress) {
 
   let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+
   if (emailAdress.match(regexEmail)) {
     return true;
   } else {
@@ -90,8 +93,17 @@ function verifemail(emailAdress) {
 
 
 
-function verifnaissance() {
+function verifnaissance(naissance) {
+  
+  let regexnaissance = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
 
+  if (naissance.match(regexnaissance)) {
+    return true;
+  } else {
+    document.querySelector(".formData[data-error]")
+    return false;
+
+  }
 }
 
 
@@ -119,7 +131,7 @@ function verifcondition() {
 
 function validate() {
 
-  if (verifemail(champemail) && verifnom(champnom) && verifprenom(champprenom) ) {
+  if (verifemail(champemail) && verifnom(champnom) && verifprenom(champprenom) && verifnaissance(champnaissance)  ) {
     
     return true;
   } else {
