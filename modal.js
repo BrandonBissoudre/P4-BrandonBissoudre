@@ -32,3 +32,16 @@ function closeModal() {
   modalbg.style.display = "none";
 }
 
+
+//*************************************************************************************verification de champ********************************************************************
+
+// DOM Elements
+const champprenom = document.querySelector("#first")
+const champnom = document.querySelector("#last")
+const champemail = document.querySelector("#email")
+const champnaissance = document.querySelector("#birthdate")
+const champtournois = document.querySelector("#quantity")
+const champlocalisation = document.querySelectorAll(".location")
+const champcondition = document.querySelector("#checkbox1")
+const champmodal = document.querySelector(".btn-submit")
+
