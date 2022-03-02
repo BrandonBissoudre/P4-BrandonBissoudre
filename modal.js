@@ -83,3 +83,27 @@ function verifemail(emailAdress) {
     return false;
   }
 }
+
+
+
+function verifnaissance() {
+
+}
+
+
+
+function veriftournois() {
+
+}
+
+
+
+function veriflocalisation() {
+
+}
+
+
+
+function verifcondition() {
+
+}
