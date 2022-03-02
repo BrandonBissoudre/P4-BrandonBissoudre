@@ -45,3 +45,15 @@ const champlocalisation = document.querySelectorAll(".location")
 const champcondition = document.querySelector("#checkbox1")
 const champmodal = document.querySelector(".btn-submit")
 
+
+
+function verifprenom(prenom) {
+
+  let regexprenom = /^[A-Z][A-Za-z\é\è\ê\-]+$/;
+  if (prenom.match(regexprenom)) {
+    return true;
+  } else {
+    return false;
+  }
+  
+}
