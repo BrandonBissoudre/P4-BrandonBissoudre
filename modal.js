@@ -53,9 +53,11 @@ function verifprenom(prenom) {
   if (prenom.match(regexprenom)) {
     return true;
   } else {
+    document.querySelector(".formData[data-error]")
     return false;
+
   }
-  
+
 }
 
 
@@ -68,7 +70,7 @@ function verifnom(nom) {
   } else {
     document.querySelector(".formData[data-error]")
     return false;
-    
+
   }
 
 }
@@ -80,7 +82,9 @@ function verifemail(emailAdress) {
   if (emailAdress.match(regexEmail)) {
     return true;
   } else {
+    document.querySelector(".formData[data-error]")
     return false;
+
   }
 }
 
@@ -115,14 +119,11 @@ function verifcondition() {
 
 function validate() {
 
-  if (verifemail(champemail)&&){
-  document.
-  return true;
-}
-  else {
+  if (verifemail(champemail) && verifnom(champnom) && verifprenom(champprenom) ) {
+    
+    return true;
+  } else {
     return false;
   }
-  
-
 
 }
