@@ -108,10 +108,18 @@ function verifnaissance(naissance) {
 
 
 
-function veriftournois() {
+function veriftournois(tournois) {
 
+  let regextournois = /^[0-9]|[1-9][0-9]|100/;
+
+  if (tournois.match(regextournois)) {
+    return true;
+  } else {
+    document.querySelector(".formData[data-error]")
+    return false;
+
+  }
 }
-
 
 
 function veriflocalisation() {
