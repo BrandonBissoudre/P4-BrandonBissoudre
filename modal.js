@@ -41,8 +41,8 @@ const champnom = document.querySelector("#last")
 const champemail = document.querySelector("#email")
 const champnaissance = document.querySelector("#birthdate")
 const champtournois = document.querySelector("#quantity")
-const champlocalisation = document.querySelectorAll(".location")
-const champcondition = document.querySelector("#checkbox1")
+const champlocalisation = document.querySelector("input[name='location']:checked")
+const champcondition = document.querySelector("input[name='checkbox']:checked")
 const champmodal = document.querySelector(".btn-submit")
 
 
@@ -126,11 +126,32 @@ function veriftournois(tournois) {
 
 function veriflocalisation() {
 
+  if (document.querySelector("input[name='location']:checked").checked == true )
+  
+  { 
+    return true;
+  }
+
+  else {
+    alert ('merci de cocher une case')
+    return false
+  }
 }
 
 
 
 function verifcondition() {
+
+  if (document.querySelector("input[name='checkbox']:checked").checked == true)
+  
+  { 
+    return true;
+  }
+
+  else {
+    alert ('merci de cocher la case condition')
+    return false
+  }
 
 }
 
