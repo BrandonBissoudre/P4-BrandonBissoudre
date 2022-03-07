@@ -47,18 +47,18 @@ const champmodal = document.querySelector(".btn-submit")
 
 
 
-function verifprenom(prenom) {
+function verifprenom(champprenom) {
 
   let regexprenom = /^[A-Z][A-Za-z\é\è\ê\-]+$/;
 
-  if (prenom.match(regexprenom)) {
+  if (champprenom.match(regexprenom)) {
     return true;
-  } else {
+  } 
+
+  else {
     document.querySelector(".formData[data-error]")
     return false;
-
   }
-
 }
 
 
@@ -68,12 +68,12 @@ function verifnom(nom) {
 
   if (nom.match(regexnom)) {
     return true;
-  } else {
+  } 
+  
+  else {
     document.querySelector(".formData[data-error]")
     return false;
-
   }
-
 }
 
 
@@ -83,10 +83,11 @@ function verifemail(emailAdress) {
 
   if (emailAdress.match(regexEmail)) {
     return true;
-  } else {
+  } 
+
+  else {
     document.querySelector(".formData[data-error]")
     return false;
-
   }
 }
 
@@ -98,10 +99,11 @@ function verifnaissance(naissance) {
 
   if (naissance.match(regexnaissance)) {
     return true;
-  } else {
+  } 
+  
+  else {
     document.querySelector(".formData[data-error]")
     return false;
-
   }
 }
 
@@ -113,10 +115,11 @@ function veriftournois(tournois) {
 
   if (tournois.match(regextournois)) {
     return true;
-  } else {
+  } 
+  
+  else {
     document.querySelector(".formData[data-error]")
     return false;
-
   }
 }
 
@@ -141,7 +144,9 @@ function validate() {
   if (verifemail(champemail) && verifnom(champnom) && verifprenom(champprenom) && verifnaissance(champnaissance) && veriftournois(champtournois) && veriflocalisation(champlocalisation) && verifcondition(champcondition)) {
     
     return true;
-  } else {
+  } 
+  
+  else {
     return false;
   }
 
