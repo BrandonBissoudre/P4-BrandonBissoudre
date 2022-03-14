@@ -36,57 +36,65 @@ function closeModal() {
 //*************************************************************************************verification de champ********************************************************************
 
 // DOM Elements
-const champprenom = document.querySelector("#first")
-const champnom = document.querySelector("#last")
-const champemail = document.querySelector("#email")
-const champnaissance = document.querySelector("#birthdate")
-const champtournois = document.querySelector("#quantity")
-const champlocalisation = document.querySelector("input[name='location']:checked")
-const champcondition = document.querySelector("input[name='checkbox']:checked")
+const champprenom = document.querySelector("#first").value
+const champnom = document.querySelector("#last").value
+const champemail = document.querySelector("#email").value
+const champnaissance = document.querySelector("#birthdate").value
+const champtournois = document.querySelector("#quantity").value
+const champlocalisation = document.querySelector("input[name='location']")
+const champcondition = document.querySelector("input[name='checkbox']")
 const champmodal = document.querySelector(".btn-submit")
 
 
 
 function verifprenom(champprenom) {
 
-  let regexprenom = /^[A-Z][A-Za-z\é\è\ê\-]+$/;
+  let regexprenom = /^[A-Z][A-Za-zéèê-]+$/;
+  console.log(champprenom)
 
   if (champprenom.match(regexprenom)) {
-    return true;
+   
+    //rajouter si c'est vrais l'erreur 
+    return true; 
   } 
 
   else {
+    //rajouter le texte en rouge 
+    alert("Le Prenom n'est pas valide");
+    //ligne pour le rajouter au champ
     document.querySelector(".formData[data-error]")
     return false;
   }
 }
 
 
-function verifnom(nom) {
+function verifnom(champnom) {
 
   let regexnom = /^[A-Z][A-Za-z\é\è\ê\-]+$/;
 
-  if (nom.match(regexnom)) {
+  if (champnom.match(regexnom)) {
     return true;
   } 
   
   else {
+    alert("Le Nom n'est pas valide");
     document.querySelector(".formData[data-error]")
     return false;
   }
 }
 
 
-function verifemail(emailAdress) {
+function verifemail(champemail) {
 
   let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
 
-  if (emailAdress.match(regexEmail)) {
+  if (champemail.match(regexEmail)) {
     return true;
   } 
 
   else {
-    document.querySelector(".formData[data-error]")
+    alert("L'email n'est pas valide");
+    document.querySelector(".formData[data-error]");
     return false;
   }
 }
@@ -126,7 +134,7 @@ function veriftournois(tournois) {
 
 function veriflocalisation() {
 
-  if (document.querySelector("input[name='location']:checked").checked == true )
+  if (document.querySelector("input[name='location']").checked == true )
   
   { 
     return true;
@@ -142,7 +150,7 @@ function veriflocalisation() {
 
 function verifcondition() {
 
-  if (document.querySelector("input[name='checkbox']:checked").checked == true)
+  if (champcondition.checked == true)
   
   { 
     return true;
@@ -162,8 +170,14 @@ function verifcondition() {
 
 function validate() {
 
-  if (verifemail(champemail) && verifnom(champnom) && verifprenom(champprenom) && verifnaissance(champnaissance) && veriftournois(champtournois) && veriflocalisation(champlocalisation) && verifcondition(champcondition)) {
+  e.preventDefault()
+
+  if ( verifprenom(champprenom) && verifnom(champnom) && verifemail(champemail) && verifnaissance(champnaissance) && veriftournois(champtournois) && veriflocalisation(champlocalisation) && verifcondition(champcondition)) {
     
+    document.querySelector("form").style.display = none;
+    let newP = document.createElement('p')
+    newP.textContent = 'votre inscription a bien été prise en compte'
+    document.querySelector(".modal-body").appendChild(newP) 
     return true;
   } 
   
@@ -172,3 +186,4 @@ function validate() {
   }
 
 }
+
