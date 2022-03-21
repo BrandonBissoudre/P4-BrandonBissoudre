@@ -36,33 +36,34 @@ function closeModal() {
 //*************************************************************************************verification de champ********************************************************************
 
 // DOM Elements
-const champprenom = document.querySelector("#first").value
-const champnom = document.querySelector("#last").value
-const champemail = document.querySelector("#email").value
-const champnaissance = document.querySelector("#birthdate").value
-const champtournois = document.querySelector("#quantity").value
-const champlocalisation = document.querySelector("input[name='location']")
-const champcondition = document.querySelector("input[name='checkbox']")
+const champprenom = document.querySelector("#first")
+const champnom = document.querySelector("#last")
+const champemail = document.querySelector("#email")
+const champnaissance = document.querySelector("#birthdate")
+const champtournois = document.querySelector("#quantity")
+const champlocalisation = document.querySelectorAll('input[type="radio"]')
+const champcondition = document.querySelector("#checkbox1")
 const champmodal = document.querySelector(".btn-submit")
 
 
 
 function verifprenom(champprenom) {
 
-  let regexprenom = /^[A-Z][A-Za-zéèê-]+$/;
-  console.log(champprenom)
+  let regexprenom = /^[A-Za-zéèê-]+$/;
+  let valeur = champprenom.value;
 
-  if (champprenom.match(regexprenom)) {
+  if (regexprenom.test(valeur)) {
    
-    //rajouter si c'est vrais l'erreur 
+    //retirer l'erreur
+    champprenom.parentNode.removeAttribute("data-error-visible")
+    champprenom.parentNode.removeAttribute("data-error")
     return true; 
   } 
 
   else {
-    //rajouter le texte en rouge 
-    alert("Le Prenom n'est pas valide");
-    //ligne pour le rajouter au champ
-    document.querySelector(".formData[data-error]")
+    //rajouter le texte en rouge
+    champprenom.parentNode.setAttribute("data-error","Merci de rentrer un prenom valide")
+    champprenom.parentNode.setAttribute("data-error-visible","true")
     return false;
   }
 }
@@ -70,15 +71,19 @@ function verifprenom(champprenom) {
 
 function verifnom(champnom) {
 
-  let regexnom = /^[A-Z][A-Za-z\é\è\ê\-]+$/;
+  let regexnom = /^[A-Za-z\é\è\ê\-]+$/;
+  let valeur = champnom.value;
 
-  if (champnom.match(regexnom)) {
-    return true;
-  } 
+  if (regexnom.test(valeur)) {
+   
+    champnom.parentNode.removeAttribute("data-error-visible")
+    champnom.parentNode.removeAttribute("data-error")
+    return true; 
+  }  
   
   else {
-    alert("Le Nom n'est pas valide");
-    document.querySelector(".formData[data-error]")
+    champnom.parentNode.setAttribute("data-error","Merci de rentrer un nom valide")
+    champnom.parentNode.setAttribute("data-error-visible","true")
     return false;
   }
 }
@@ -87,94 +92,103 @@ function verifnom(champnom) {
 function verifemail(champemail) {
 
   let regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+  let valeur = champemail.value;
 
-  if (champemail.match(regexEmail)) {
+  if (regexEmail.test(valeur)) {
+
+    champemail.parentNode.removeAttribute("data-error-visible")
+    champemail.parentNode.removeAttribute("data-error")
     return true;
   } 
 
   else {
-    alert("L'email n'est pas valide");
-    document.querySelector(".formData[data-error]");
+    champemail.parentNode.setAttribute("data-error","Merci de rentrer un Email valide")
+    champemail.parentNode.setAttribute("data-error-visible","true")
     return false;
   }
 }
 
 
 
-function verifnaissance(naissance) {
+function verifnaissance(champnaissance) {
   
   let regexnaissance = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/;
+  let valeur = champnaissance.value;
 
-  if (naissance.match(regexnaissance)) {
+  if (regexnaissance.test(valeur)) {
+
+    champnaissance.parentNode.removeAttribute("data-error-visible")
+    champnaissance.parentNode.removeAttribute("data-error")
     return true;
   } 
   
   else {
-    document.querySelector(".formData[data-error]")
+    champnaissance.parentNode.setAttribute("data-error","Merci de rentrer une date valide")
+    champnaissance.parentNode.setAttribute("data-error-visible","true")
     return false;
   }
 }
 
 
 
-function veriftournois(tournois) {
+function veriftournois(champtournois) {
 
   let regextournois = /^[0-9]|[1-9][0-9]|100/;
+  let valeur = champtournois.value;
 
-  if (tournois.match(regextournois)) {
+  if (regextournois.test(valeur)) {
+
+    champtournois.parentNode.removeAttribute("data-error-visible")
+    champtournois.parentNode.removeAttribute("data-error")
     return true;
   } 
   
   else {
-    document.querySelector(".formData[data-error]")
+
+    champtournois.parentNode.setAttribute("data-error","Merci de rentrer un nombre de tournois")
+    champtournois.parentNode.setAttribute("data-error-visible","true")
     return false;
   }
 }
 
 
-function veriflocalisation() {
+function veriflocalisation(champlocalisation) {
 
-  if (document.querySelector("input[name='location']").checked == true )
-  
-  { 
-    return true;
+  console.log (champlocalisation)
+
+  for (champ of champlocalisation) {
+    if (champ.checked){
+    return true
+    }
   }
 
-  else {
-    alert ('merci de cocher une case')
-    return false
-  }
+  return false
 }
 
 
 
-function verifcondition() {
+function verifcondition(champcondition) {
 
-  if (champcondition.checked == true)
-  
-  { 
+  if (champcondition.checked == true){ 
     return true;
   }
 
-  else {
-    alert ('merci de cocher la case condition')
     return false
-  }
-
+ 
 }
 
 
 //*************************************************************************************Bouton validation********************************************************************
 
+document.getElementById("form-modal").addEventListener("submit",validate)
 
-
-function validate() {
+function validate(e) {
 
   e.preventDefault()
 
   if ( verifprenom(champprenom) && verifnom(champnom) && verifemail(champemail) && verifnaissance(champnaissance) && veriftournois(champtournois) && veriflocalisation(champlocalisation) && verifcondition(champcondition)) {
     
-    document.querySelector("form").style.display = none;
+    document.querySelector("#form-modal").style.display = "none";
     let newP = document.createElement('p')
     newP.textContent = 'votre inscription a bien été prise en compte'
     document.querySelector(".modal-body").appendChild(newP) 
