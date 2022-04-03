@@ -241,6 +241,5 @@ function validate(e) {
   else {
     return false;
   }
-
 }
 
