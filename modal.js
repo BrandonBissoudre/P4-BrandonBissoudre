@@ -235,6 +235,7 @@ function validate(e) {
     newP.style.marginTop = '345px'
     newP.style.marginBottom = '345px'
     return true;
+
   } 
   
   else {
